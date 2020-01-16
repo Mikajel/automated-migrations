@@ -2,6 +2,12 @@
 
 This is a backup of my MySQL database migration script.
 
+Script runs all migration SQL scripts in order by name.
+Migrations that were already applied do NOT run.
+After migration runs, it is saved into 'migrations' table in the same DB.
+Migrations happen in TRANSACTIONS.
+If single migration fails, migrating does NOT continue.
+
 Assumptions:
 - ran by bash 4 or higher or bash 4 superset shell
 - selected database contains table named "migration" [id, name, datetime default=now()]
